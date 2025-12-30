@@ -28,3 +28,13 @@ This project demonstrates a robust CI/CD pipeline using GitHub Actions, focusing
 * **GitHub Actions:** Integrated a CI pipeline that triggers on every push.
 * **Automated Quality Gates:** The pipeline automatically runs Flake8 (linting) and Pytest (unit testing).
 * **Build Verification:** Ensures the Docker image builds successfully in a clean environment before completion.
+## Security & Compliance
+* **DevSecOps Integration:** Automated container scanning using **Trivy**.
+* **Vulnerability Management:** Pipeline is configured to fail if 'CRITICAL' or 'HIGH' vulnerabilities are detected in the Docker image.
+* **Shift-Left Security:** Identifying infrastructure weaknesses during the build phase rather than in production.
+
+## Week 1 Outcomes
+- [x] Multi-stage Docker build (Optimized size).
+- [x] Automated Pytest suite (Quality Gate).
+- [x] GitHub Actions automation.
+- [x] Container Security Scanning.
