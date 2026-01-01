@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quality-app-deployment
+  namespace: devops-project-ns  # This matches the namespace you made with Terraform!
+  labels:
+    app: quality-app
+spec:
+  replicas: 2  # This provides high availability
+  selector:
+    matchLabels:
+      app: quality-app
+  template:
+    metadata:
+      labels:
+        app: quality-app
+    spec:
+      containers:
+      - name: quality-app-container
+        image: quality-app:v1  # This uses the image you built in Week 1
+        imagePullPolicy: Never # Critical for Minikube to look locally for the image
+        ports:
+        - containerPort: 5000
+        # These "Probes" are your QA-DevOps signature
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
